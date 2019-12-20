@@ -2,38 +2,51 @@
 # -*- coding: utf-8 -*-
 
 """
-This module is used to get defination of a word.
+This module is used to get defination of a word. 
+This module provides two functions, 
+one for querying word and another for generating wordbook, 
+it will provides a html string.
 """
 
 __author__ = 'Teige Gao'
 
 from wordbook import get_dic
-import pandas as pd
 
-def query_word(word,fre):
-    word_item = '<div class = "word_ite"><span class = "word_def_w">' + word + '</span><span class = "lon_def"> ' + fre +'</span></div>'
+
+def query_word(word, fre = ''):
+    """
+    This function will return a defination of a word.
+    """
+    word_item = '<div class = "word_ite"><span class = "word_def_w">' + \
+        word + '</span><span class = "lon_def"> ' + fre + '</span></div>'
     if word in get_dic.voc_easy.index:
-        voc_easy = '<div class = "explaincard_content" style="font-style:italic">' + get_dic.voc_easy.loc[word] + '</div>'
+        voc_easy = '<div class = "explaincard_content" style="font-style:italic">' + \
+            get_dic.voc_easy.loc[word] + '</div>'
     else:
-        voc_easy = ''  
+        voc_easy = ''
     if word in get_dic.voc_more.index:
-        voc_more = '<div class = "explaincard_content">' + get_dic.voc_more.loc[word] + '</div>'
+        voc_more = '<div class = "explaincard_content">' + \
+            get_dic.voc_more.loc[word] + '</div>'
     else:
         voc_more = ''
     if word in get_dic.cn_define_fre.index:
-        cn_define_fre = '<div class = "explaincard_content">' + get_dic.cn_define_fre.loc[word] + '</div>'
+        cn_define_fre = '<div class = "explaincard_content">' + \
+            get_dic.cn_define_fre.loc[word] + '</div>'
     else:
-        cn_define_fre = ''  
+        cn_define_fre = ''
     if word in get_dic.easy_und.index:
-        easy_und = '<div class = "explaincard_content">' + get_dic.easy_und.loc[word] + '</div>'
+        easy_und = '<div class = "explaincard_content">' + \
+            get_dic.easy_und.loc[word] + '</div>'
     else:
         easy_und = ''
-    if voc_easy != '' or voc_more !='':
-        voc = '<div class = "explaincard"><div class = "explaincard_title">&nbsp&nbspExplation E-E</div>' + voc_easy + voc_more + '</div>'
-    else: 
+    if voc_easy != '' or voc_more != '':
+        voc = '<div class = "explaincard"><div class = "explaincard_title">&nbsp&nbspExplation E-E</div>' + \
+            voc_easy + voc_more + '</div>'
+    else:
         voc = ''
     if cn_define_fre != '' or easy_und != '':
-        vvv = '<div class = "explaincard"><div class = "explaincard_title">&nbsp&nbspExplation C-E</div>' + cn_define_fre + easy_und + '</div>'
+        vvv = '<div class = "explaincard"><div class = "explaincard_title">&nbsp&nbspExplation C-E</div>' + \
+            cn_define_fre + easy_und + '</div>'
     else:
         vvv = ''
     if voc != '' or vvv != '':
@@ -42,8 +55,13 @@ def query_word(word,fre):
         result = None
     return result
 
+
 def generate_html(dataset):
-    temp = dataset.apply(lambda x: query_word(x['word'],x['freq']),axis=1).tolist()
+    """
+    This function will return a html of wordbook quried by the dataset.
+    """
+    temp = dataset.apply(lambda x: query_word(
+        x['word'], x['freq']), axis=1).tolist()
     result = '''<html>
     <head>
         <style>
@@ -219,8 +237,6 @@ def generate_html(dataset):
 </html>'''
     return result
 
+
 if __name__ == '__main__':
     print('Welcome to use "wordbook" library, please use it with the import command!')
-    dataset = pd.read_csv(open(
-    "C:\\Users\\yiqga\\OneDrive\\WorkSync\\wordbook\\_resource\\sample.csv", 'r', encoding="UTF-8"), low_memory=False)
-    print(generate_html(dataset))
