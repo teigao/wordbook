@@ -5,7 +5,7 @@
 This module is used to get defination of a word. 
 This module provides two functions, 
 one for querying word and another for generating wordbook, 
-it will provides a html string.
+it will provides a html string. For more information, I would suggest you referring to: https://github.com/teigao/wordbook
 """
 
 __author__ = 'Teige Gao'
@@ -63,7 +63,7 @@ def query_word(word, fre=''):
 
 def generate_html(dataset):
     """
-    This function will return a html of wordbook quried by the dataset.
+    This function will return a html of wordbook quried by the dataset. The result will be saved to ./_resource/wordbook.html and be opened with the default browser.
     """
     html_style = open(
         _root_folder + 'style.css', 'r', encoding='UTF-8').read()
