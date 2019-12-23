@@ -22,6 +22,6 @@ dataset = pd.DataFrame({"word": "simple", "freq": "W1"}, {
 print(wordbook.generate_html(dataset))
 ```
 
-The result will be saved at _resource/wordbook.html under %PYTHONPATH%\Lib\site-packages\wordbook
+The result will be saved at _resource/wordbook.html under %PYTHONPATH%\Lib\site-packages\wordbook, **the code of the html is UTF-8, if you want to open it in Word, please change the code to UTF-8 with Bom.** Tip: we can convert the html file to PDF in Microsoft Word.
 
 
