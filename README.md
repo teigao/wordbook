@@ -4,7 +4,7 @@ This module is used to create wordbook automatically.
 **Important: All dictionary files used in this module are get from 
 <https://www.pdawiki.com/forum/?fromuid=260106>. They come from vocabulary.com, COCA 60000**
 
-We can download this module from <https://github.com/teigao/wordbook/blob/master/wordbook.7z>, then unzip this file and put the wordbook folder to the Python path. We can refer to the sample.py in the project list to get started.
+We can download this module from <https://raw.githubusercontent.com/teigao/wordbook/master/wordbook.7z>, then unzip this file and put the wordbook folder to the Python path. We can refer to the sample.py in the project list to get started.
 
 **This module is developed under Python 3.6.8, before using this module, please put the wordbook folder under %PYTHONPATH%\Lib\site-packages. We also need to install pandas library before using this module** <- very important
 
