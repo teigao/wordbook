@@ -22,6 +22,13 @@ dataset = pd.DataFrame(
 print(wordbook.generate_html(dataset))
 ```
 
+The output file will like below:
+
+![Image text](https://raw.githubusercontent.com/teigao/wordbook/master/image/result.png)
+
+
+We can change the style of the output file by changing the style.css file under _resource folder.
+
 The result will be saved at _resource/wordbook.html under %PYTHONPATH%\Lib\site-packages\wordbook, **the code of the html is UTF-8, if you want to open it in Word, please change the code to UTF-8 with Bom.** Tip: we can convert the html file to PDF in Microsoft Word.
 
 
