@@ -8,7 +8,7 @@ We can download this module from <https://github.com/teigao/wordbook/blob/master
 
 **This module is developed under Python 3.6.8, before using this module, please put the wordbook folder under %PYTHONPATH%\Lib\site-packages. We also need to install pandas library before using this module** <- very important
 
->This module provides one function, `generate_html()` will receive a pandas dataframe data type and will generate a html file to the _resource/wordbook.html under the root folder of wordbook.
+>This module provides one function, `generate_html()` will receive a pandas dataframe data type and will generate a html file to the _resource/wordbook.html under the root folder of wordbook. **Important: We need to create a dataset with two columns, one column name is word and another is freq. The freq will not be queried, it only display after the word as a frequence of this word.**
 
 How to use: Open python client as Administrator, then run the following script:
 
