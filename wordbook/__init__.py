@@ -76,7 +76,7 @@ def generate_html(dataset):
         ''' + html_style + '''
         </style>
     </head>
-    <body>''' + "".join(s for s in temp if s is not None) + '''    
+    <body>''' + "\n".join(s for s in temp if s is not None) + '''    
     </body>
 </html>'''
     out_html.write(result)
