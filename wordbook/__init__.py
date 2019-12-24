@@ -13,12 +13,14 @@ __author__ = 'Teige Gao'
 from wordbook import get_dic
 import os
 import webbrowser
+import pandas as pd 
+from shutil import copyfile
 
 _current_path = os.path.dirname(__file__)
-_root_folder = _current_path+"/_resource/"
+_project_root_folder = _current_path+"/_resource/"
 
 
-def query_word(word, fre=''):
+def _query_word(word, fre=''):
     """
     This function will return a defination of a word.
     """
@@ -66,9 +68,9 @@ def generate_html(dataset):
     This function will return a html of wordbook quried by the dataset. The result will be saved to ./_resource/wordbook.html and be opened with the default browser.
     """
     html_style = open(
-        _root_folder + 'style.css', 'r', encoding='UTF-8').read()
-    out_html = open(_root_folder + 'wordbook.html', 'w', encoding='UTF-8')
-    temp = dataset.apply(lambda x: query_word(
+        _project_root_folder + 'style.css', 'r', encoding='UTF-8').read()
+    
+    temp = dataset.apply(lambda x: _query_word(
         x['word'], x['freq']), axis=1).tolist()
     result = '''<html>
     <head>
@@ -80,13 +82,22 @@ def generate_html(dataset):
         ''' + "\n".join(s for s in temp if s is not None) + '''    
     </body>
 </html>'''
-    out_html.write(result)
-    out_html.close()
-    html_path = 'file:///' + _root_folder + 'wordbook.html'
-    webbrowser.open_new_tab(html_path)
-    message = "The html has been generated"
-    return message
+    return result
+    
 
+def create_book(source_path, result_saved_path):
+    temp_html = open(_project_root_folder + 'wordbook.html', 'w', encoding='UTF-8')
+    word_dataset = pd.read_csv(open(
+        source_path, 'r', encoding='UTF-8'), low_memory=False)
+    generated_html = generate_html(word_dataset)
+    temp_html.write(generated_html)
+    temp_html.close()
+    saved_html_path = 'file:///' + result_saved_path
+    copyfile(_project_root_folder + 'wordbook.html',result_saved_path)
+    webbrowser.open_new_tab(saved_html_path)
+    message = "The html has been generated to " + result_saved_path
+    print(message)
+    return None
 
 if __name__ == '__main__':
     print('Welcome to use "wordbook" library, please use it with the import command!')
