@@ -5,17 +5,17 @@
 
 This module is used to create wordbook automatically. This document will be divided into two parts:
 
-- <a name="easy_to_use">easy to use</a>
-- <a name="hard_to_use">generate function for dataset</a>
+- <a href="#easy_to_use">easy to use</a>
+- <a href="#hard_to_use">generate function for dataset</a>
 
-### <a href="#easy_to_use">easy to use</a>
+### <a name ="easy_to_use">easy to use</a>
 
 Firstly, download Python runtime 3.6.8 from <https://www.python.org/downloads/release/python-368/>, for 32-bit machine, download the "Windows x86 executable installer", for 64-bit machine, download the "Windows x86-64 executable installer", then install the exe file on your machine.
 
 We can download this tool from <https://raw.githubusercontent.com/teigao/wordbook/master/wordbook.7z>, then unzip this file and put the wordbook folder to the Python path. We can refer to the sample.py in the project list to get started.
 
 
-### <a href="#hard_to_use">generate function for dataset</a>
+### <a name="hard_to_use">generate function for dataset</a>
 
 
 
