@@ -96,10 +96,13 @@ def create_book(source_path = _project_root_folder + 'sample.csv', result_saved_
         source_path, 'r', encoding='UTF-8'), low_memory=False)
     generated_html = generate_html(word_dataset)
     temp_html.write(generated_html)
-    temp_html.close()
+
     saved_html_path = 'file:///' + result_saved_path
     copyfile(_project_root_folder + 'wordbook.html',result_saved_path)
     webbrowser.open_new_tab(saved_html_path)
+    temp_html.seek(0)
+    temp_html.truncate()
+    temp_html.close()
     message = "The html has been generated to " + result_saved_path
     print(message)
     return None
