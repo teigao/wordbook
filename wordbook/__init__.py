@@ -15,10 +15,15 @@ import os
 import webbrowser
 import pandas as pd 
 from shutil import copyfile
+import winreg
 
 _current_path = os.path.dirname(__file__)
 _project_root_folder = _current_path+"/_resource/"
 
+def _get_desktop():
+    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER,
+                          r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders',)
+    return winreg.QueryValueEx(key, "Desktop")[0]
 
 def _query_word(word, fre=''):
     """
@@ -65,7 +70,7 @@ def _query_word(word, fre=''):
 
 def generate_html(dataset):
     """
-    This function will return a html of wordbook quried by the dataset. The result will be saved to ./_resource/wordbook.html and be opened with the default browser.
+    This function will return a html of wordbook quried by the dataset. You can use print() function to get the result and saved it as html file manually.
     """
     html_style = open(
         _project_root_folder + 'style.css', 'r', encoding='UTF-8').read()
@@ -85,7 +90,7 @@ def generate_html(dataset):
     return result
     
 
-def create_book(source_path, result_saved_path):
+def create_book(source_path = _project_root_folder + 'sample.csv', result_saved_path = _get_desktop() + '\\result.html'):
     temp_html = open(_project_root_folder + 'wordbook.html', 'w', encoding='UTF-8')
     word_dataset = pd.read_csv(open(
         source_path, 'r', encoding='UTF-8'), low_memory=False)

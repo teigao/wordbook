@@ -12,7 +12,7 @@ import os
 import re
 
 _current_path = os.path.dirname(__file__)
-_root_folder = _current_path+"/_resource/"
+_root_folder = _current_path+"/_resource/dictionary/"
 
 
 def _get_dictionary(file_name):
