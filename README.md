@@ -33,7 +33,7 @@ import wordbook
 wordbook.create_book('word_list_path','result_path')
 ```
 
-The function wordbook.create_book requires two parameter, one for word_list, another for result_path. If you can't provide these parameters, it will use the sample word result generating a file to your desktop. Only one parameter, we can use wordbook.create_book(source_path= "").
+The function wordbook.create_book requires two parameter, one for word_list, another for result_path. If you can't provide these parameters, it will use the sample word result generating a file to your desktop. Only one parameter, we can use wordbook.create_book(source_path= ""). **Important: The path should use \\ to divide rather than single one**
 
 You can refer to the sample.csv in the wordbook/_resource folder or change it directly.
 
