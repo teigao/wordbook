@@ -72,11 +72,12 @@ def generate_html(dataset):
         x['word'], x['freq']), axis=1).tolist()
     result = '''<html>
     <head>
-        <style>\n\t
-        ''' + html_style + '''
-        \n</style>
+        <style>
+            ''' + html_style + '''
+        </style>
     </head>
-    <body>\n''' + "\n".join(s for s in temp if s is not None) + '''    
+    <body>
+        ''' + "\n".join(s for s in temp if s is not None) + '''    
     </body>
 </html>'''
     out_html.write(result)
